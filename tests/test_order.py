@@ -9,7 +9,7 @@ from locators.order_page_locators import OrderPageLocators
 
 
 @pytest.mark.usefixtures("driver")
-@allure.feature("Создание заказа")  # Перевод "Order Creation"
+@allure.feature("Создание заказа")
 class TestOrder:
     @pytest.mark.parametrize(
         "order_button_locator, name, surname, address, metro_locator, phone, date_choice, rental_period_list, color_checkbox, comment",
@@ -22,8 +22,8 @@ class TestOrder:
              OrderPageLocators.RENTAL_PERIOD_LIST_2, OrderPageLocators.COLOR_CHECKBOX_2, Constants.COMMENT_2),
         ]
     )
-    @allure.story("Тестирование создания заказа")  # Перевод "Test Order Creation"
-    @allure.title("Создание заказа с параметризованными данными")  # Перевод "Create order with parameterized data"
+    @allure.story("Тестирование создания заказа")
+    @allure.title("Создание заказа с параметризованными данными")
     def test_create_order(self, driver, order_button_locator, name, surname, address, metro_locator,
                           phone, date_choice, rental_period_list, color_checkbox, comment):
         main_page = MainPage(driver)
@@ -39,5 +39,5 @@ class TestOrder:
         assert driver.current_url == URLS.URL_MAIN, "Переход на главную страницу 'Самокат' не произошёл"
 
         order_page.click_yandex_logo()
-        order_page.wait_for_url(URLS.URL_DZEN)  # Заменено wait_url
+        order_page.wait_for_url(URLS.URL_DZEN)
         assert driver.current_url == URLS.URL_DZEN, "Переход на главную страницу Дзена не произошёл"
